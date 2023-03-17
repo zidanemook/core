@@ -1,6 +1,7 @@
 package hello.core.order;
 
 import ch.qos.logback.core.joran.util.PropertySetter;
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
@@ -20,7 +21,7 @@ public class OrderServiceImpl implements OrderService
     //타입매칭 시도
     //동일 타입 가지는 객체 있다면 필드명 이름으로 매칭시도
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
